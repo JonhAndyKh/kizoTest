@@ -4,15 +4,27 @@ const payButton = document.querySelector("#pay-button");
 
 async function requestJson(url, options) {
   const response = await fetch(url, options);
+  const responseText = await response.text();
   let data;
   try {
-    data = await response.json();
+    data = responseText ? JSON.parse(responseText) : null;
   } catch {
-    throw new Error("The checkout server returned an invalid response.");
+    const requestId = response.headers.get("x-vercel-id");
+    const requestDetails = requestId ? ` Request ID: ${requestId}.` : "";
+    throw new Error(
+      `The checkout server returned a non-JSON response (HTTP ${response.status}).${requestDetails} Check the Vercel function logs.`
+    );
   }
 
   if (!response.ok) {
-    throw new Error(data.error || "The payment request could not be completed.");
+    throw new Error(
+      data && typeof data.error === "string"
+        ? data.error
+        : "The payment request could not be completed."
+    );
+  }
+  if (!data || typeof data !== "object" || Array.isArray(data)) {
+    throw new Error("The checkout server returned an unexpected response.");
   }
   return data;
 }
