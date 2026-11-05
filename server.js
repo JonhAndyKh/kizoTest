@@ -324,7 +324,10 @@ async function handleApiRequest(request, response, pathname) {
   if (request.method === "GET" && verifyMatch) {
     const invoiceId = encodeURIComponent(verifyMatch[1]);
     const result = await callKizoPay(`/api/v1/payment/verify/${invoiceId}`);
-    return sendJson(response, 200, result);
+    return sendJson(response, 200, {
+      ...result,
+      status: result.status ?? result.payment_status ?? "UNKNOWN",
+    });
   }
 
   return sendJson(response, 404, { error: "Not found." });

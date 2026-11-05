@@ -44,7 +44,7 @@ function showReturnedPaymentStatus() {
 showReturnedPaymentStatus();
 
 function isFinalPaymentStatus(status) {
-  return Boolean(status) && !["PENDING", "PROCESSING"].includes(status.toUpperCase());
+  return Boolean(status) && !["PENDING", "PROCESSING", "UNKNOWN"].includes(status.toUpperCase());
 }
 
 async function watchPayment(invoiceId, paymentWindow) {
@@ -57,11 +57,12 @@ async function watchPayment(invoiceId, paymentWindow) {
       `/api/payments/${encodeURIComponent(invoiceId)}/verify`
     );
 
-    if (!isFinalPaymentStatus(payment.status)) {
+    const status = payment.status ?? payment.payment_status;
+    if (!isFinalPaymentStatus(status)) {
       continue;
     }
 
-    const finalStatus = payment.status.toUpperCase();
+    const finalStatus = status.toUpperCase();
 
     if (paymentWindow && !paymentWindow.closed) {
       const returnUrl = new URL(
@@ -77,7 +78,9 @@ async function watchPayment(invoiceId, paymentWindow) {
     }
     payButton.disabled = false;
     payButton.textContent = "Pay now";
-    if (finalStatus !== "SUCCESS") {
+    if (["SUCCESS", "PAID", "COMPLETED"].includes(finalStatus)) {
+      window.location.assign(`/order/${encodeURIComponent(invoiceId)}?payment=SUCCESS`);
+    } else {
       window.alert(`Payment finished with status: ${finalStatus}.`);
     }
 
