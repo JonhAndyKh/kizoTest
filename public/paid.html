@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7fb">
+    <meta name="description" content="Your KizoPay payment order details and status.">
+    <title>Order details | KizoPay Checkout</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/paid.js" defer></script>
+  </head>
+  <body>
+    <main class="checkout">
+      <section class="card paid-card" aria-labelledby="page-title">
+        <header class="paid-header">
+          <a class="brand" href="/" aria-label="KizoPay Checkout home">
+            <span class="brand-mark" aria-hidden="true">K</span>
+            <span>KizoPay <span class="brand-light">Checkout</span></span>
+          </a>
+          <span class="secure-badge"><span aria-hidden="true">●</span> Secure payment</span>
+        </header>
+
+        <div id="payment-icon" class="success-mark" aria-hidden="true">✓</div>
+        <p id="payment-eyebrow" class="eyebrow">PAYMENT CONFIRMATION</p>
+        <h1 id="page-title" class="paid-title">Loading order...</h1>
+        <p id="payment-intro" class="paid-intro" aria-live="polite">Checking the latest payment details.</p>
+
+        <section class="order-details" aria-label="Order details">
+          <div class="detail-row">
+            <span>Invoice ID</span>
+            <strong id="invoice-id">—</strong>
+          </div>
+          <div class="detail-row">
+            <span>Amount</span>
+            <strong id="invoice-amount">—</strong>
+          </div>
+          <div class="detail-row">
+            <span>Payment status</span>
+            <strong id="invoice-status" class="status-pill">Checking</strong>
+          </div>
+        </section>
+
+        <a class="home-link" href="/">Return to checkout</a>
+        <p class="secure-note"><span aria-hidden="true">●</span> Payment securely processed by KizoPay</p>
+      </section>
+    </main>
+  </body>
+</html>

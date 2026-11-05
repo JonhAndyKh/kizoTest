@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7fb">
+    <meta name="description" content="A secure KizoPay checkout for your payment.">
+    <title>Secure checkout | KizoPay</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main class="checkout">
+      <section class="card" aria-labelledby="page-title">
+        <header class="checkout-header">
+          <a class="brand" href="/" aria-label="KizoPay Checkout home">
+            <span class="brand-mark" aria-hidden="true">K</span>
+            <span>KizoPay <span class="brand-light">Checkout</span></span>
+          </a>
+          <span class="secure-badge"><span aria-hidden="true">●</span> Secure payment</span>
+        </header>
+        <p class="eyebrow">SIMPLE · SECURE · FAST</p>
+        <h1 id="page-title">Make a payment</h1>
+        <p class="intro">Enter the amount you’d like to pay. Your payment is securely processed by KizoPay.</p>
+
+        <form id="payment-form">
+          <label for="amount">Amount</label>
+          <div class="amount-input">
+            <span aria-hidden="true">$</span>
+            <input
+              id="amount"
+              name="amount"
+              type="number"
+              min="0.01"
+              step="0.01"
+              placeholder="0.00"
+              inputmode="decimal"
+              required
+            >
+            <span class="currency">USD</span>
+          </div>
+          <button id="pay-button" type="submit">Pay now</button>
+        </form>
+
+        <p class="secure-note"><span aria-hidden="true">●</span> Your payment details are protected</p>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,420 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #172033;
+  background: #f5f7fb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(84, 105, 212, 0.16), transparent 45%),
+    linear-gradient(180deg, #f8f9fd 0%, #f2f4fa 100%);
+}
+
+.checkout {
+  display: grid;
+  min-height: 100vh;
+  padding: 32px 18px;
+  place-items: center;
+}
+
+.card {
+  width: min(100%, 480px);
+  padding: 38px;
+  border: 1px solid #e8ebf3;
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 24px 70px rgba(30, 43, 79, 0.1), 0 2px 8px rgba(30, 43, 79, 0.03);
+}
+
+.checkout-header,
+.paid-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #172033;
+  font-size: 15px;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.brand .brand-mark {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.brand-light {
+  color: #788196;
+  font-weight: 550;
+}
+
+.secure-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border: 1px solid #e5f3eb;
+  border-radius: 999px;
+  background: #f5fbf7;
+  color: #287c56;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.secure-badge span {
+  font-size: 8px;
+}
+
+.brand-mark {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 25px;
+  border-radius: 13px;
+  background: #4559d7;
+  color: #fff;
+  font-size: 23px;
+  font-weight: 750;
+  place-items: center;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: #5869ce;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.13em;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(26px, 7vw, 32px);
+  letter-spacing: -0.04em;
+}
+
+.intro {
+  max-width: 360px;
+  margin: 12px 0 30px;
+  color: #70798b;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+label {
+  display: block;
+  margin-bottom: 9px;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.amount-input {
+  display: flex;
+  height: 58px;
+  align-items: center;
+  gap: 10px;
+  padding: 0 15px;
+  border: 1px solid #dfe3ed;
+  border-radius: 11px;
+  color: #8991a1;
+  transition: border-color 150ms, box-shadow 150ms;
+}
+
+.amount-input:focus-within {
+  border-color: #5869ce;
+  box-shadow: 0 0 0 3px rgba(88, 105, 206, 0.12);
+}
+
+.amount-input > span:first-child {
+  color: #374258;
+  font-size: 19px;
+}
+
+input {
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #172033;
+  font: inherit;
+  font-size: 20px;
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  margin: 0;
+  appearance: none;
+}
+
+input[type="number"] {
+  appearance: textfield;
+}
+
+.currency {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+button {
+  width: 100%;
+  min-height: 54px;
+  margin-top: 18px;
+  border: 0;
+  border-radius: 11px;
+  background: #4559d7;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  transition: background 150ms, transform 150ms;
+}
+
+button:hover {
+  background: #394cc4;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.result {
+  margin-top: 23px;
+  padding: 18px;
+  border-radius: 12px;
+  background: #f7f8fc;
+  border: 1px solid #eceef5;
+  text-align: center;
+}
+
+.status-message {
+  margin: 0;
+  color: #374258;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.status-message.error {
+  color: #b42318;
+}
+
+.qr-wrap {
+  margin-top: 15px;
+}
+
+.qr-wrap img {
+  display: block;
+  width: min(100%, 240px);
+  aspect-ratio: 1;
+  margin: 0 auto;
+  border-radius: 8px;
+  background: #fff;
+  object-fit: contain;
+}
+
+.qr-wrap p {
+  margin: 11px 0 0;
+  color: #70798b;
+  font-size: 12px;
+}
+
+.invoice-label {
+  margin: 12px 0 0;
+  color: #70798b;
+  font-size: 11px;
+}
+
+.receipt-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: #4559d7;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.receipt-link:hover {
+  text-decoration: underline;
+}
+
+.secure-note {
+  margin: 26px 0 0;
+  color: #9299a8;
+  font-size: 11px;
+  text-align: center;
+}
+
+.secure-note span {
+  color: #35a878;
+  font-size: 9px;
+}
+
+.paid-card {
+  text-align: center;
+}
+
+.paid-header {
+  margin-bottom: 34px;
+  text-align: left;
+}
+
+.success-mark {
+  display: grid;
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 24px;
+  border: 8px solid #e4f6ed;
+  border-radius: 50%;
+  background: #35a878;
+  color: #fff;
+  font-size: 36px;
+  font-weight: 700;
+  place-items: center;
+}
+
+.success-mark.pending-mark {
+  border-color: #fff3d8;
+  background: #e6a32d;
+}
+
+.success-mark.neutral-mark {
+  border-color: #e9edf5;
+  background: #7d8799;
+}
+
+.paid-title {
+  color: #20734f;
+}
+
+.paid-intro {
+  margin: 12px auto 24px;
+  max-width: 360px;
+  color: #70798b;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.order-details {
+  margin: 0 0 24px;
+  padding: 4px 18px;
+  border: 1px solid #e9ecf3;
+  border-radius: 14px;
+  background: #fafbfe;
+  text-align: left;
+}
+
+.detail-row {
+  display: flex;
+  min-height: 54px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid #eceef4;
+  color: #70798b;
+  font-size: 13px;
+}
+
+.detail-row:last-child {
+  border-bottom: 0;
+}
+
+.detail-row strong {
+  color: #29344a;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.status-pill {
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: #eef0f5;
+  color: #626d81 !important;
+  font-size: 10px !important;
+  letter-spacing: 0.04em;
+}
+
+.status-pill.status-paid {
+  background: #e7f6ee;
+  color: #20734f !important;
+}
+
+.status-pill.status-pending {
+  background: #fff4dc;
+  color: #95620e !important;
+}
+
+.status-pill.status-other {
+  background: #f0f1f5;
+  color: #626d81 !important;
+}
+
+.home-link {
+  display: flex;
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  border-radius: 11px;
+  background: #4559d7;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 150ms, transform 150ms;
+}
+
+.home-link:hover {
+  background: #394cc4;
+}
+
+.home-link:active {
+  transform: translateY(1px);
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 28px 22px;
+  }
+
+  .checkout-header,
+  .paid-header {
+    margin-bottom: 30px;
+  }
+
+  .secure-badge {
+    padding: 7px 8px;
+    font-size: 9px;
+  }
+
+  .brand {
+    gap: 8px;
+    font-size: 13px;
+  }
+}
